@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <style>
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+        }
+        .index{
+            height: 450px;
+            width: 370px;
+            background-color: gold;
+            border-radius: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+        button{
+            height: 40px;
+            width: 250px;
+        }
+        .index:hover button{
+            transform: scale(1.1);
+        }
+        h1{
+            text-align: center;
+        }
+        .move{
+            animation: slide 2s linear infinite alternate;
+        }
+        @keyframes slide{
+            from{
+                transform: translateX(0px);
+            }
+            to{
+                transform: translateX(10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="index move">
+        <h1>WELLCOME TO QUIZ ❤ </h1>
+        <button onclick="window.location.href='register.html'">Register</button>
+        <button onclick="window.location.href='Login.html'">Login</button>
+    </div>
+    <script>
+        document.addEventListener("mouseenter",function(){
+            document.getElementsByClassName("index")[0].style.boxShadow="20px 20px 20px  rgb(255, 183, 0)"
+        })
+    </script>
+</body>
+</html>

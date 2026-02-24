@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .quiz{
+            background-color: white;
+            height: 400px;
+            width: 780px;
+            padding: 50px;
+            display: flex;
+            flex-direction: row;
+            gap: 100px;
+            justify-content: center;
+            align-items: center;
+        }
+        .tech1{
+            width: 250px;
+            height: 150px;
+            text-align: center;
+            background: linear-gradient(to left,white,aqua);
+            /* background-color: aqua; */
+            cursor:pointer;
+            transition:0.3s;
+            border-radius: 20px;
+            border: 2px solid black;
+        }
+        .tech2{
+            width: 250px;
+            height: 150px;
+            text-align: center;
+            /* background-color: rgb(253, 2, 81); */
+            background: linear-gradient(to left,white, rgb(253, 2, 81));
+            cursor:pointer;
+            transition:0.5s;
+            border-radius: 20px;
+            border:2px solid black;
+        }
+        .tech3{
+            width: 250px;
+            height: 150px;
+            text-align: center;
+            /* background-color: rgb(255, 183, 0); */
+            background: linear-gradient(to left,white, rgb(255, 183, 0));
+            cursor:pointer;
+            transition:0.8s;
+            border-radius: 20px;
+            border: 2px solid black;
+        }
+        h2{
+            margin-top: 60px;
+        }
+        .tech1:hover,.tech2:hover,.tech3:hover{
+            transform: scale(1.5);
+        }
+        h1{
+            text-align: center;
+            text-shadow: 2px 5px 5px black;
+        }
+        h2{ 
+           text-shadow: 2px 10px 5px black;
+        }
+        .move{
+            display: inline-block;
+            animation: slide 2s linear infinite alternate;
+        }
+        @keyframes slide{
+            from{
+                transform: translateX(0px);
+            }
+            to{
+                transform: translateX(20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        <span style="color: rgb(253, 2, 81);">F</span>
+        <span style="color: rgb(255, 183, 0);">R</span>
+        <span style="color: pink;">O</span>
+        <span style="color: aqua;">N</span>
+        <span style="color: blueviolet;">T</span>
+        <span style="color: aquamarine;">E</span>
+        <span style="color: deeppink;">N</span>
+        <span style="color: mediumorchid;">D</span>
+        <br>
+        <span style="color: rgb(253, 2, 81);">T</span>
+        <span style="color: rgb(255, 183, 0);">E</span>
+        <span style="color: pink;">C</span>
+        <span style="color: aqua;">H</span>
+        <span style="color: blueviolet;">N</span>
+        <span style="color: aquamarine;">O</span>
+        <span style="color: deeppink;">L</span>
+        <span style="color: mediumorchid;">O</span>
+        <span style="color: rgb(253, 2, 81);">G</span>
+        <span style="color: rgb(255, 183, 0);">Y</span> ✨✨✨
+    </h1>
+    <div class="quiz moving">
+        <div class="tech1 move" onclick="location.href='htmlquiz.html'"><h2>HTML 🌐</h2></div>
+        <div class="tech2 move" onclick="location.href='cssquiz.html'"><h2>CSS 🎨</h2></div>
+        <div class="tech3 move" onclick="location.href='jsquiz.html'"><h2>JS ⚡</h2></div>
+    </div>
+    <script>
+        document.addEventListener("mouseenter",function(){
+            document.getElementsByClassName("quiz")[0].style.boxShadow="20px 20px 20px 20px silver"
+        })
+        document.addEventListener("mouseenter",function(){
+            document.getElementsByClassName("tech1")[0].style.boxShadow="20px 20px 20px  aqua"
+        })
+        document.addEventListener("mouseenter",function(){
+            document.getElementsByClassName("tech2")[0].style.boxShadow="20px 20px 20px rgb(253, 2, 81)"
+        })
+        document.addEventListener("mouseenter",function(){
+            document.getElementsByClassName("tech3")[0].style.boxShadow="20px 20px 20px rgb(255, 183, 0)"
+        })
+
+    </script>
+</body>
+</html>

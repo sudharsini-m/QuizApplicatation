@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <style>
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: white;
+        }
+        .login{
+            height: 450px;
+            width: 350px;
+            background:linear-gradient(to left,white, rgb(253, 2, 81));
+            border-radius: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+        button{
+            border-radius: 20px;
+            background-color: black;
+            color: white;
+            width: 150px;
+            height: 40px;
+        }
+        .login:hover button{
+            transform: scale(1.2);
+        }
+        input{
+            width: 200px;
+            height: 40px;
+            border-radius: 30px;
+            background-color: white;
+        }
+        ::placeholder{
+            color: black;
+            text-align: center;
+        }
+        a{
+            color: rgb(253, 2, 81);
+        }
+        .move{
+            animation: slide 2s linear infinite alternate;
+        }
+        @keyframes slide{
+            from{
+                transform: translateX(0px);
+            }
+            to{
+                transform: translateX(10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login move">
+        <h1>LOGIN PAGE</h1>
+        <input type="text" id="name" placeholder="Enter Username">
+        <input type="password" id="password" placeholder="Enter Password ">
+        <button onclick="login()">Login</button>
+        <p>Do not have account ? 😥<a href="register.html">Register Here</a></p>
+    </div>
+    <script>
+        document.addEventListener("mouseenter",function(){
+            document.getElementsByClassName("login")[0].style.boxShadow="20px 20px 20px  rgb(253, 2, 81)"
+        })
+        function login(){
+            let name=document.getElementById("name").value;
+            let password=document.getElementById("password").value;
+            if(name==""||password==""){
+                alert("Please enter all details 😢");
+                return;
+            }
+            let storename=localStorage.getItem(name);
+            if(storename==null){
+                alert("Username is not register");
+            }
+            else if(storename!=password){
+                alert("Wrong password");
+            }
+            else{
+                alert("Login is successfully ✔😊");
+                window.location.href="home.html"
+            }
+        }
+    </script>
+</body>
+</html>

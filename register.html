@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+    <style>
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: white;
+        }
+        .register{
+            height: 450px;
+            width: 350px;
+            background: linear-gradient(to left,white,aqua);
+            border-radius: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+        button{
+            border-radius: 20px;
+            background-color: black;
+            color: white;
+            width: 150px;
+            height: 40px;
+        }
+        .register:hover button{
+            transform: scale(1.1);
+            background-color: white;
+            color: black;
+        }
+        input{
+            width: 200px;
+            height: 40px;
+            border-radius: 30px;
+            background-color: white;
+        }
+        ::placeholder{
+            color: black;
+            text-align: center;
+        }
+        a{
+            color: rgb(0, 255, 213);
+        }
+        .move{
+            animation: slide 2s linear infinite alternate;
+        }
+        @keyframes slide{
+            from{
+                transform: translateX(0px);
+            }
+            to{
+                transform: translateX(10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="register move">
+        <h1>REGISTER PAGE</h1>
+        <input type="text" id="name" placeholder="Enter Name">
+        <input type="text" id="email" placeholder="Enter Emailid">
+        <input type="password" id="password" placeholder="Enter Password ">
+        <button onclick="register()">Register</button>
+        <p>Already have account ?🧐<a href="login.html">Login Here</a></p>
+    </div>
+    <script>
+        document.addEventListener("mouseenter",function(){
+            document.getElementsByClassName("register")[0].style.boxShadow="20px 20px 20px aqua"
+        })
+        function register(){
+            let name=document.getElementById("name").value;
+            let email=document.getElementById("email").value;
+            let password=document.getElementById("password").value;
+            if(name==""||email==""||password==""){
+                alert("please enter all details 😉");
+                return;
+            }
+            if(localStorage.getItem(name)!=null){
+                alert("already username exists 🤷‍♀️");
+                return;
+            }
+            localStorage.setItem(name,password)
+            alert("Registeration Successfully !🤗🙂✔");
+            window.location.href="login.html"
+        }
+    </script>
+</body>
+</html>

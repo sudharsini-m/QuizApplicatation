@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htmlquiz</title>
+    <style>
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg,#fa043d, #fe03ee,#f902aa,#a305fe,#03adf6,#02ec21,#f9b702,#f6d365,#f53702,#ff6ec7,#00f5ff);
+        }
+        button{
+            background: linear-gradient(135deg,#fa043d, #fe03ee,#f902aa,#a305fe,#03adf6,#02ec21,#f9b702,#f6d365,#f53702,#ff6ec7,#00f5ff);
+            border-radius: 20px;
+            width: 150px;
+            height: 40px;
+            border: 2px solid black;
+        }
+        button:hover{
+            background-color: black;
+            color: white;
+            transform: scale(1.1);
+        }
+        input[type='radio']{
+            margin-right: 10px;
+        }   
+        .quizbox{
+            width: 500px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            text-align: center;
+            border: 5px solid black;
+            background: rgba(255,255,255,0.08);
+            color: white;
+
+        } 
+        input[type='radio']{
+            transform: scale(1.3);
+            margin-right: 10px;
+        }
+        .move{
+            display: inline-block;
+            animation: slide 2s infinite alternate;
+        }
+        @keyframes slide{
+            from{
+                transform: translate(0px);
+            }
+            to{
+                transform: translate(20px);
+            }
+        }
+        h1{
+            text-shadow: 2px 5px 5px black;
+        }
+        #question{
+            font-weight: bold;
+            font-size: 25px;
+            color: black;
+        }
+        #options{
+            font-size: 20px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="quizbox move">
+        <h1>
+            <span style="color: rgb(253, 2, 81);">H</span>
+            <span style="color: rgb(255, 183, 0);">T</span>
+            <span style="color: rgb(255, 6, 47);">M</span>
+            <span style="color: aqua;">L</span>
+            <br>
+            <span style="color: blueviolet;">Q</span>
+            <span style="color: aquamarine;">U</span>
+            <span style="color: deeppink;">E</span>
+            <span style="color: mediumorchid;">S</span>
+            <span style="color: rgb(253, 2, 81);">T</span>
+            <span style="color: rgb(255, 183, 0);">I</span>
+            <span style="color: rgb(254, 113, 137);">O</span>
+            <span style="color: aqua;">N</span>
+        </h1>
+        <p id="question"></p>
+        <div id="options"></div>
+        <br>
+        <button id="nextbtn" onclick="nextQuestion()">Next</button>
+        <p id="result"></p>
+    </div>
+    <script>
+        var questions=[
+            { q: "1.What does CSS stand for?", options: ["Creative Style Sheets", "Cascading Style Sheets", "Computer Style Sheets", "Colorful Style Sheets"], correct: 1 },
+            { q: "2.Which property is used to change the background color?", options: ["color", "bgcolor", "background-color", "background"], correct: 2},
+            { q: "3.How do you select an element with id 'demo'?", options: [".demo", "#demo", "demo", "*demo"], correct: 1, explanation: "The # symbol is used to select an element by its ID in CSS." },
+            { q: "4.Which property controls the font size?", options: ["text-size", "font-style", "font-size", "font-weight"], correct: 2},
+            { q: "5.What is the correct CSS syntax?", options: ["body:color=blue;", "{body;color:blue;}", "body {color: blue;}", "{body:color:blue}"], correct: 2},
+            { q: "6.Which property makes text bold?", options: ["text-style: bold", "font-weight: bold", "font: bold", "text: bold"], correct: 1},
+            { q: "7.What does 'display: flex' do?", options: ["Creates a table", "Enables flexbox layout", "Creates a grid", "Hides element"], correct: 1},
+            { q: "8.Which unit is relative to the font-size of the root element?", options: ["px", "em", "rem", "%"], correct: 2 },
+            { q: "9.What is the default value of position?", options: ["relative", "absolute", "static", "fixed"], correct: 2},
+            { q: "10.How do you make a list not show bullets?", options: ["list-style: none", "list: no-bullet", "bullet: none", "list-type: none"], correct: 0}
+        ];
+        var current=0;
+        var score=0;
+        function loadQuestion(){
+            document.getElementById("question").innerText=questions[current].q;
+            var optionsHTML="";
+            for(var i=0;i<questions[current].options.length;i++){
+                optionsHTML += "<input type='radio' name='answers' value='"+i+"'> "+ questions[current].options[i] + "<br>";
+            }
+            document.getElementById("options").innerHTML=optionsHTML;
+        }
+        function nextQuestion(){
+            var selected=document.querySelector("input[name='answers']:checked");
+            if(selected){
+                if(selected.value==questions[current].correct){
+                    score++;
+                }
+            }
+            current++;
+            if(current<questions.length){
+                loadQuestion();
+            }else{
+                document.getElementById("question").innerText="Quiz is finished"
+                document.getElementById("options").innerHTML="";
+                document.getElementById("result").innerHTML = "Your Score: " + score + "<br><br>" +"<button onclick='goHome()'>Home</button>";
+                document.getElementById("nextbtn").style.display="none";
+            }
+        }
+        function goHome() {
+            window.location.href="home.html"
+        }
+        loadQuestion();
+
+    </script>
+</body>
+</html>
+            
